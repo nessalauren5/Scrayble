@@ -1,3 +1,5 @@
-# Scrayable
+# Scrayble
 
-Scrayble - A Health Care Coordination Provider built on the MEAN stack
+A Health Care Coordination Provider built on the MEAN stack
+
+
