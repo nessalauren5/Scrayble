@@ -87,16 +87,35 @@ Fhir.prototype.printResourceById = function printResourceById(resource, id, call
 		});
 };
 
-Fhir.prototype.postResource = function postResource(resource, callback) {
+Fhir.prototype.insertOrUpdateResource = function insertOrUpdateResource(resource, callback) {
   var data = JSON.stringify(resource.jsonPrint());
 	//var data = resource.jsonPrint();
 	//callback(data);
 
+	//Assume an update
+	var slash = "/";
+	var thisPath = "/gt-fhir-webapp/base"
+		+ slash
+		+ resource.resourceType
+		+ slash
+		+ resource.id
+		+ "?_format=json";
+	var thisMethod = "PUT";
+
+	//Initialize for create.
+	if (resource.id == "" || resource.id == null) {
+		thisPath = "/gt-fhir-webapp/base"
+			+ slash
+			+ resource.resourceType
+			+ "?_format=json";
+		thisMethod = "POST";
+	}
+
   var options = {
       host: "polaris.i3l.gatech.edu",
       port: "8080",
-      path: "/gt-fhir-webapp/base/Patient?_format=json",
-      method: "POST",
+      path: thisPath,
+      method: thisMethod,
       headers: {
           "Content-Type": "application/json+fhir",
           "Content-Length": Buffer.byteLength(data)
@@ -110,12 +129,60 @@ Fhir.prototype.postResource = function postResource(resource, callback) {
 					chunks.push(chunk);
 				});
 				resp.on('end', function () {
-					var text = Buffer.concat(chunks).toString('utf8');
+					var text = {
+						method: thisMethod,
+						statusCode: resp.statusCode,
+						headers: resp.headers
+					}
+					resp.setEncoding('utf8');
 					callback(text);
 				});
 			});
 
 	req.write(data);
+	req.end();
+
+};
+
+Fhir.prototype.deleteResource = function deleteResource(resource, callback) {
+
+	var slash = "/";
+	var thisPath = "/gt-fhir-webapp/base"
+		+ slash
+		+ resource.resourceType
+		+ slash
+		+ resource.id
+		+ "?_format=json";
+	var thisMethod = "DELETE";
+
+  var options = {
+      host: "polaris.i3l.gatech.edu",
+      port: "8080",
+      path: thisPath,
+      method: thisMethod,
+      headers: {
+          "Content-Type": "application/json+fhir",
+          "Content-Length": 0
+      }
+  };
+
+	var req = http.request(options,
+			function (resp) {
+				var chunks = [];
+				resp.on('data', function (chunk) {
+					chunks.push(chunk);
+				});
+				resp.on('end', function () {
+					var text = {
+						method: thisMethod,
+						statusCode: resp.statusCode,
+						headers: resp.headers
+					}
+					resp.setEncoding('utf8');
+					callback(text);
+				});
+			});
+
 	req.end();
 
 };

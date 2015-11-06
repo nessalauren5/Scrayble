@@ -1,4 +1,5 @@
-function Address(line, city, state, postalCode) {
+function Address(use, line, city, state, postalCode) {
+	this.use = use;
 	this.line = line;
 	this.city = city;
 	this.state = state;
@@ -6,14 +7,16 @@ function Address(line, city, state, postalCode) {
 };
 
 Address.prototype.prettyPrint = function() {
-	return "Street: " + this.line
+	return "Use: " + this.use
+	+ " Street: " + this.line
 	+ " City: " + this.city
 	+ " State: " + this.state
 	+ " Postal Code: " + this.postalCode;
 };
 
 Address.prototype.jsonPrint = function() {
-	return { line: this.line,
+	return { use: this.use,
+				line: this.line,
 				city: this.city,
 				state: this.state,
 				postalCode: this.postalCode

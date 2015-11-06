@@ -33,9 +33,11 @@ app.get('/', function(request, response) {
 
 	//CREATE
 
-	var patient = new Patient("Patient", "", {"status":"generated","div":"//<div><div class=\"hapiHeaderText\"> Josemaria L <b>DOLORES </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Address</td><td><span>1234 Rocky Mountain Drive </span><br /><span>null </span><br /><span>Lincoln </span><span>IL </span></td></tr><tr><td>Date of birth</td><td><span>13 December 1922</span></td></tr></tbody></table></div>"},
-	"Dolores", ["Josemaria","L"], "47 Flea Bottom", "Kings Landing", "Kings Landing", "90210", "male", "2015-10-31", true);
-	fhir.postResource(patient, function(resp) { response.send(resp);});
+	//var patient = new Patient("Patient", "695", {"status":"generated","div":"<div><div class=\"hapiHeaderText\"> Josemaria L <b>DOLORES </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Address</td><td><span>1234 Rocky Mountain Drive </span><br /><span>null </span><br /><span>Lincoln </span><span>IL </span></td></tr><tr><td>Date of birth</td><td><span>13 December 1922</span></td></tr></tbody></table></div>"},
+	//"Dolores", ["Josemaria","L"], "home", "56 Flea Bottom", "Kings Landing", "IL", "90210", "male", "2015-10-31", true);
+	//fhir.insertOrUpdateResource(patient, function(resp) { response.send(resp);});
+	//fhir.deleteResource(patient, function(resp) { response.send(resp);});
+
 
 	//var encounter = new Encounter("", "status", "eClass", "556", "periodStart", "periodEnd", "locationId", "serviceProvider");
 	//fhir.postResourceById("Encounter", null, function(resp) { response.send(resp);});
