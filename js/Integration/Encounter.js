@@ -1,7 +1,11 @@
-function Encounter(id, status, eClass, patientId, periodStart, periodEnd, locationId, serviceProvider) {
+var Reference = require("./Reference");
+var Period = require("./Period");
+
+function Encounter(resourceType, id, status, eClass, patientId, periodStart, periodEnd, locationId, serviceProvider) {
+	this.resourceType = resourceType;
 	this.id = id;
 	this.status = status;
-	this.eClass = eClass;
+	this.class = eClass;
 	this.patientId = patientId;
 	this.periodStart = periodStart;
 	this.periodEnd = periodEnd;
@@ -10,9 +14,10 @@ function Encounter(id, status, eClass, patientId, periodStart, periodEnd, locati
 };
 
 Encounter.prototype.prettyPrint = function() {
-	return "ID: " + this.id
+	return "Resource Type: " + this.resourceType
+	+ " ID: " + this.id
 	+ " Status: "+this.status
-	+ " Class: "+this.eClass
+	+ " Class: "+this.class
 	+ " Patient ID: "+this.patientId
 	+ " Start Time: "+this.periodStart
 	+ " End Time: "+this.periodEnd
@@ -21,19 +26,21 @@ Encounter.prototype.prettyPrint = function() {
 };
 
 Encounter.prototype.jsonPrint = function() {
-	return {	id: this.id,
-				status: this.status,
-				eClass: this.eClass,
-				patientId: this.patientId,
-				periodStart: this.periodStart,
-				periodEnd: this.periodEnd,
-				locationId: this.locationId,
-				serviceProvider: this.serviceProvider
-			};
+	var slash = "/";
+	return {	resourceType: this.resourceType,
+		id: this.id,
+		status: this.status,
+		class: this.class,
+		patient: new Reference("Patient" + slash + this.patientId),
+		period: new Period(this.periodStart, this.periodEnd),
+		location: [{ location: new Reference("Location" + slash + this.locationId) }],
+		serviceProvider: new Reference("Organization" + slash + this.serviceProvider)
+	};
 };
 
 Encounter.prototype.getEncounterByText = function getEncounterByText(text) {
 	var encounter = JSON.parse(text);
+	var resourceType = encounter.resourceType;
 	var id = encounter.id;
 	var status = encounter.status;
 	var eClass = encounter.class;
@@ -42,8 +49,7 @@ Encounter.prototype.getEncounterByText = function getEncounterByText(text) {
 	var periodEnd = encounter.period.end;
 	var locationId = encounter.location[0].location.reference.replace("Location/","");
 	var serviceProvider = encounter.serviceProvider.reference.replace("Organization/","");
-	return new Encounter(id, status, eClass, patientId, periodStart, periodEnd, locationId, serviceProvider);
+	return new Encounter(resourceType, id, status, eClass, patientId, periodStart, periodEnd, locationId, serviceProvider);
 };
 
 module.exports = Encounter;
-
