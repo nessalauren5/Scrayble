@@ -67,10 +67,10 @@
           <li class="hidden">
             <a href="#page-top"></a>
           </li>
-          <li class="page-scroll active">
+          <li class="page-scroll">
             <a href="home.html">Home</a>
           </li>
-          <li class="page-scroll">
+          <li class="page-scroll active">
             <a href="search.html">Search</a>
           </li>
           <li class="page-scroll">
@@ -106,25 +106,43 @@
         <div class="row">
           <div class="col-lg-2"></div>
           <div class="col-lg-6">
-        <h2> Notifications</h2>
+        <h2> </h2>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-3"></div>
-      <div class="col-lg-6">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-7">
+        <div class="row">
+  		<h2>Search All Records</h2><br>
+             <div id="custom-search-input">
+                              <div class="input-group col-md-12">
+                                  <input type="text" class="  search-query form-control" placeholder="Patient Name" />
+                                  <span class="input-group-btn">
+                                      <button class="btn btn-success" type="button">
+                                          <span class=" glyphicon glyphicon-search"></span>
+                                      </button>
+                                  </span>
+                              </div>
+                          </div>
+  	</div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-2"></div>
+      <div class="col-lg-7">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th class="col-xs-1">Type</th>
-                  <th class="col-lg-2">Message</th>
-                  <th class="col-lg-1">Patient</th>
-                  <th class="col-xs-1"></th>
+                  <th class="col-xs-1">Patient Name</th>
+                  <th class="col-xs-1">Physician</th>
+                  <th class="col-lg-1">Home Nurse/Aid</th>
+                  <th class="col-lg-1">Care Plan</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="success"><td><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></td><td>Patient Record Updated</td><td><a href="patient.html">John McCall</a></td><td> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></td></tr>
-                <tr class="danger"><td><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></td><td>Patient Health Alert</td><td><a href="patient.html">Alix Knight</a></td><td> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></td></tr>
-                <tr class="success"><td><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></td><td>Patient Record Updated</td><td><a href="patient.html">Jessie Lopez</a></td><td> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></td></tr>
+                <tr class=""><td><a href="patient.html">John Brady</a></td><td>Dr. Banksy, Ph.D</td><td>N/A</td><td><a href="create.html">Create</a></td></tr>
+                <tr class=""><td><a href="patient.html">Megan Hutser</a></td><td>Dr. Banksy, Ph.D</td><td>Sandy Patterson</td><td><a href="careplan.html">View/Edit</a></td></tr>
+                <tr class=""><td><a href="patient.html">Geraldine Kent</a></td><td>Dr. Banksy, Ph.D</td><td>Max Kent</td><td><a href="create.html">Create</a></td></tr>
               </tbody>
             </table>
           </div>
