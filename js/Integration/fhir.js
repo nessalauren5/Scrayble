@@ -1,5 +1,4 @@
 var http = require('http');
-var Qs = require('qs');
 var Patient = require("./Patient");
 var Encounter = require("./Encounter");
 var Observation = require("./Observation");
