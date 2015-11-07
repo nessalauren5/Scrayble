@@ -9,7 +9,15 @@ p {
 p.small {
     font-size: 16px;
 }
-
+.heartbeat-icon:before {
+    content: "\f21e";
+    display: inline-block;
+    position: relative;
+    top: -.8em;
+    padding: 0 .25em;
+    font-family: FontAwesome;
+    font-size: 2em;
+}
 a,
 a:hover,
 a:focus,
@@ -42,7 +50,7 @@ hr.star-primary {
 
 hr.star-light:after,
 hr.star-primary:after {
-    content: "\f005";
+    content: "\f21e";
     display: inline-block;
     position: relative;
     top: -.8em;
@@ -80,8 +88,8 @@ header {
 }
 
 header .container {
-    padding-top: 100px;
-    padding-bottom: 50px;
+    padding-top: 50px;
+    padding-bottom: 25px;
 }
 
 header img {
@@ -104,8 +112,8 @@ header .intro-text .skills {
 
 @media(min-width:768px) {
     header .container {
-        padding-top: 200px;
-        padding-bottom: 100px;
+        padding-top: 120px;
+        padding-bottom: 50px;
     }
 
     header .intro-text .name {
@@ -163,9 +171,11 @@ header .intro-text .skills {
 .navbar-inverse {
     border: 0;
 }
-
+#custom-search-input{
+  padding-bottom: 50px;
+}
 section:first-of-type {
-    padding: 100px 0;
+    padding: 50px 0;
 }
 
 section h2 {
@@ -186,7 +196,14 @@ section.success a.active {
     outline: 0;
     color: #2c3e50;
 }
-
+.special-img
+{
+    position: relative;
+    top: -5px;
+    float: left;
+    left: -5px;
+    max-width: 30px !important;
+}
 @media(max-width:767px) {
     section {
         padding: 75px 0;
