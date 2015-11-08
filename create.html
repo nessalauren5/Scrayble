@@ -88,7 +88,7 @@
       <!-- /.container-fluid -->
     </nav>
 
-    <!-- Header -->
+    <!-- Header
     <header>
       <div class="container">
         <div class="row">
@@ -101,9 +101,10 @@
         </div>
       </div>
     </header>
+-->
 
+    <section style="padding-top:100px;  ">
 
-    <section>
       <div class="row">
         <div class="text-center"><h1>Patient Care Plan</h1></div>
       </div>
@@ -111,122 +112,127 @@
         <div class="form-crumbs text-center">
           <div class="col-sm-1 col-sm-offset-4">
             <div class="row">Patient Info</div>
+            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
             <div class="row"><i id="icon-1" class="fa fa-2x fa-heart"></i></div>
           </div>
           <div class="col-sm-1">
             <div class="row">Health History</div>
+            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
             <div class="row"><i id="icon-2" class="fa fa-2x fa-heart-o"></i></div>
           </div>
           <div class="col-sm-1">
             <div class="row">Care Plan</div>
+            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
             <div class="row"><i id="icon-3" class="fa fa-2x fa-heart-o"></i></div>
           </div>
         </div>
       </div>
 
-      <!-- id will be unique, but class name will be same -->
+      <!-- Page 1 of Form -->
       <div id="pcp1" class="frm">
-
         <fieldset>
-          <div id="wrapper">
+          <div id="wrapper" class="col-lg-offset-1 col-lg-9">
             <h2>Patient Info</h2>
+            <p> Click any field to edit patient information.</p>
             <form name="patientinfo" id="createpcp" method="post" action="yourpage.html">
-
+              <!-- First Row -->
               <div class="col-2">
                 <label>
-                  Name
-                  <input placeholder="What is your full name?" id="name" name="name" tabindex="1">
+                   Name
+                  <input placeholder="What is the patient's full name?" id="name" name="name" tabindex="1">
+                </label>
+              </div>
+              <div class="col-4">
+                <label>
+                  Date of Birth
+                  <input placeholder="MM/DD/YYYY" id="bday" name="bday" tabindex="2">
+                </label>
+              </div>
+              <div class="col-4">
+                <label>
+                  Physician
+                  <input placeholder="Enter physicians full name" id="pname" name="pname" tabindex="5">
+                </label>
+              </div>
+
+              <!-- Second Row -->
+              <div class="col-4">
+                <label>
+                  Gender
+                  <input placeholder="Patient's Gender" id="address" name="address" tabindex="4">
+                </label>
+              </div>
+              <div class="col-2">
+                  <label>
+                    Mailing Address
+                    <input placeholder="Patient's full address" id="address" name="address" tabindex="4">
+                  </label>
+                </div>
+                <div class="col-4">
+                <label>
+                  Home Health Aid
+                  <input placeholder="Enter HHA's full name" id="aid" name="aid" tabindex="9">
+                </label>
+              </div>
+
+              <!-- Third Row -->
+              <div class="col-4">
+                <label>
+                  Employer
+                  <input placeholder="Patient's Employer" id="pemp" name="pemp" tabindex="3">
                 </label>
               </div>
               <div class="col-2">
                 <label>
-                  Company
-                  <input placeholder="Where do you currently work?" id="company" name="company" tabindex="2">
-                </label>
-              </div>
-
-              <div class="col-3">
-                <label>
-                  Phone Number
-                  <input placeholder="What is the best # to reach you?" id="phone" name="phone" tabindex="3">
-                </label>
-              </div>
-              <div class="col-3">
-                <label>
-                  Email
-                  <input placeholder="What is your e-mail address?" id="email" name="email" tabindex="4">
-                </label>
-              </div>
-              <div class="col-3">
-                <label>
-                  Availability
-                  <select tabindex="5">
-                    <option>5-15 hrs per week</option>
-                    <option>15-30 hrs per week</option>
-                    <option>30-40 hrs per week</option>
-                  </select>
-                </label>
-              </div>
-
-              <div class="col-4">
-                <label>
-                  Skills
-                  <input placeholder="List a few of your primary skills" id="skills" name="skills" tabindex="6">
+                  Employer's Address
+                  <input placeholder="Patient's Employer's Address" id="pemp" name="pemp" tabindex="3">
                 </label>
               </div>
               <div class="col-4">
+               <label>
+                 Phone Number
+                 <input placeholder="What is the best # to reach the patient?" id="phone" name="phone" tabindex="6">
+               </label>
+             </div>
+              <div class="col-4">
                 <label>
-                  Yrs Experience
-                  <input placeholder="How many years of experience?" id="experience" name="experience" tabindex="7">
+                  Emergency Contact
+                  <input placeholder="Emergency Contact Name" id="pemp" name="pemp" tabindex="3">
                 </label>
               </div>
-              <div class="col-4">
-                <label>Contact References?</label>
-                <center style="position:relative; margin-bottom:8px;"><input type="checkbox" class="js-switch"></center>
+              <div class="col-2">
+                <label>
+                  Emergency Contact Address
+                  <input placeholder="Emergency Contact Address" id="pemp" name="pemp" tabindex="3">
+                </label>
               </div>
-              <div class="col-4 switch">
-                <label>E-mail Updates?</label>
-                <center style="position:relative;margin-bottom:8px;"><input type="checkbox" class="js-switch"></center>
-              </div>
-
-            </div>
-
-            <div class="form-group">
-              <div class="col-lg-10 col-lg-offset-2">
-                <!-- open1 is given in the class that is binded with the click event -->
-                <button class="btn btn-success open1 text-right" type="button">Next <span class="fa fa-arrow-right"></span></button>
+              <div class="row" style="width:100%;">
+              <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                  <!-- open1 is given in the class that is binded with the click event -->
+                  <button class="btn btn-success open1 text-right" type="button">Next <span class="fa fa-arrow-right"></span></button>
+                </div>
               </div>
             </div>
 
-          </fieldset>
+</form>
+            </div>
 
-        </div>
 
-        <!-- id will be unique, but class name will be same -->
+        </fieldset>
+
+      </div>
+
+        <!-- Page 2 of Form -->
+
         <div id="pcp2" class="frm" style="display:none;">
           <fieldset>
             <div id="wrapper">
               <h2>Patient Health</h2>
-              <form name="patienthealth" id="patienthealth" method="post" action="yourpage.html">
-                <div class="col-2">
-                  <label>
-                    Name
-                    <input placeholder="What is your full name?" id="name" name="name" tabindex="1">
-                  </label>
-                </div>
-                <div class="col-2">
-                  <label>
-                    Company
-                    <input placeholder="Where do you currently work?" id="company" name="company" tabindex="2">
-                  </label>
-                </div>
-
-                <div class="col-3">
-                  <label>
-                    Phone Number
-                    <input placeholder="What is the best # to reach you?" id="phone" name="phone" tabindex="3">
-                  </label>
-                </div>
+              <form name="patienthealth" id="createpcp" method="post" action="yourpage.html">
                 <div class="col-3">
                   <label>
                     Email
@@ -258,31 +264,31 @@
                 </div>
                 <div class="col-4">
                   <label>Contact References?</label>
-                  <center style="position:relative; margin-bottom:8px;"><input type="checkbox" class=""></center>
+                  <center style="position:relative; margin-bottom:8px;"><input type="checkbox" class="js-switch"></center>
                 </div>
                 <div class="col-4 switch">
                   <label>E-mail Updates?</label>
-                  <center style="position:relative;margin-bottom:8px;"><input type="checkbox" class=""></center>
+                  <center style="position:relative;margin-bottom:8px;"><input type="checkbox" class="js-switch"></center>
                 </div>
-              </form>
-            </div>
-
-
-            <div class="clearfix" style="height: 10px;clear: both;"></div>
-
-            <div class="form-group">
-              <div class="col-lg-10 col-lg-offset-2">
-                <!-- back2 unique class name  -->
-                <button class="btn btn-primary back2" type="button"><span class="fa fa-arrow-left"></span> Back</button>
-                <!-- open2 unique class name -->
-                <button class="btn btn-success open2" type="button">Next <span class="fa fa-arrow-right"></span></button>
+</form>
               </div>
-            </div>
-          </fieldset>
-        </form>
-      </div>
 
-      <!-- id will be unique, but class name will be same -->
+              <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button class="btn btn-primary back2 text-right" type="button">Back <span class="fa fa-arrow-left"></span></button>
+                  <!-- open1 is given in the class that is binded with the click event -->
+                  <button class="btn btn-success open2 text-right" type="button">Next <span class="fa fa-arrow-right"></span></button>
+                </div>
+              </div>
+
+          </fieldset>
+
+        </div>
+
+
+
+
+      <!-- Page 3 of Form -->
       <div id="pcp3" class="frm" style="display:none;">
         <fieldset>
           <legend>Step 3 of 3</legend>
