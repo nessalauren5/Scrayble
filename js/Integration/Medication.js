@@ -1,36 +1,38 @@
-function Medication(id, text, status, name, display) {
+var Coding = require("./Coding");
+var Text = require("./Text");
+
+function Medication(resourceType, id, text, name, code) {
+	this.resourceType = resourceType;
 	this.id = id;
 	this.text = text;
-	this.status = status;
 	this.name = name;
-	this.display = display;
+	this.code = code;
 };
 
 Medication.prototype.prettyPrint = function() {
-	return "ID: " + this.id
-	+ " Text: "+this.text
-	+ " Status: "+this.status
+	return "Resource Type: " + this.resourceType
+	+ " ID: " + this.id
+	+ " Text: "+JSON.stringify(this.text);
 	+ " Name: "+this.name
-	+ " Display: "+this.display;
+	+ " Code: "+JSON.stringify(this.code);
 };
 
 Medication.prototype.jsonPrint = function() {
-	return {	id: this.id,
-				text: this.text,
-				status: this.status,
-				name: this.name,
-				display: this.display
-			};
+	return {	resourceType: this.resourceType,
+		id: this.id,
+		text: this.text,
+		name: this.name,
+		code: { coding: [this.code] }
+	};
 };
 
 Medication.prototype.getMedicationByText = function getMedicationByText(text) {
 	var medication = JSON.parse(text);
+	var resourceType = medication.resourceType;
 	var id = medication.id;
-	var text = medication.text.div;
-	var status = medication.text.status;
 	var name = medication.name;
-	var display = medication.code.coding[0].display;
-	return new Medication(id, text, status, name, display);
+	var code = new Coding(medication.code.coding[0].system, medication.code.coding[0].code, medication.code.coding[0].display);
+	return new Medication(resourceType, id, new Text(medication.text.status, medication.text.div), name, code);
 };
 
 module.exports = Medication;
