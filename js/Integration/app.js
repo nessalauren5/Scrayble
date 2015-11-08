@@ -17,8 +17,8 @@ app.get('/', function(request, response) {
 	//READ
 	//fhir.getResourceById("Patient", "556", function(resp) { response.send(resp.jsonPrint());});
 	//fhir.getResourceById("Encounter", "7346", function(resp) { response.send(resp.jsonPrint());});
-	// fhir.getResourceById("Observation", "40857", function(resp) { response.send(resp.jsonPrint());});
-	//fhir.getResourceById("Condition", "3187", function(resp) { response.send(resp.jsonPrint());});
+	//fhir.getResourceById("Observation", "40857", function(resp) { response.send(resp.jsonPrint());});
+	fhir.getResourceById("Condition", "3187", function(resp) { response.send(resp.jsonPrint());});
 	//fhir.getResourceById("MedicationDispense", "765", function(resp) { response.send(resp.jsonPrint());});
 	//fhir.getResourceById("Medication", "528264", function(resp) { response.send(resp.jsonPrint());});
 	//fhir.getResourceById("MedicationPrescription", "2048", function(resp) { response.send(resp.jsonPrint());});
@@ -38,9 +38,9 @@ app.get('/', function(request, response) {
 	//"Dolores", ["Josemaria","L"], "home", "56 Flea Bottom", "Kings Landing", "IL", "90210", "male", "2015-10-31", true);
 	//var entity = new Encounter("Encounter", "", "finished", "emergency", "556", "2015-10-26T20:12:00-04:00", "2015-10-26T20:12:00-04:00", 4, 6);
 	//var entity = new Observation("Observation", "",	new Coding("http://loinc.org", "3141-9", "Body weight Measured"),	new ValueQuantity(77.1, "kg", "http://unitsofmeasure.org", "kg"),	"2015-10-26T20:12:00-04:00", "final", "ok", "556", "7346");
+	//var entity = new Condition("Condition", "", "556", "7346", "5", new Coding("http://snomed.info/sct", "230265002", "Familial Alzheimer's disease of early onset"),	"Familial Alzheimer's disease of early onset, SNOMED-CT, 230265002", "confirmed", "2002-05-26T00:00:00-04:00");
 	//fhir.insertOrUpdateResource(entity, function(resp) { response.send(resp);});
 
-	//var condition = new Condition("", "556", "encounterId", "practitionerId", "display", "text", "clinicalStatus", "onsetDateTime");
 	//var observation = new Observation("", "display", "eClass", "valueQuantity", "appliesDateTime", "status", "reliability", "subject", "encounter");
 
 	//UPDATE
@@ -54,6 +54,9 @@ app.get('/', function(request, response) {
 
 	//There appears to be a bug with Observation Update in the FHIR Server so this doesn't work.
 	//var entity = new Observation("Observation", "41187",	new Coding("http://loinc.org", "3141-9", "Body weight Measured"),	new ValueQuantity(77.1, "kg", "http://unitsofmeasure.org", "kg"),	"2015-10-26T20:12:00-04:00", "final", "ok", "556", "7346");
+
+	//There appears to be a bug with Observation Update in the FHIR Server so this doesn't work.
+	//var entity = new Condition("Condition", "3189", "556", "7346", "5", new Coding("http://snomed.info/sct", "230265002", "Familial Alzheimer's disease of early onset"),	"Familial Alzheimer's disease of early onset, SNOMED-CT, 230265002", "confirmed", "2002-05-26T00:00:00-04:00");
 	//fhir.insertOrUpdateResource(entity, function(resp) { response.send(resp);});
 
 	//DELETE
@@ -62,6 +65,7 @@ app.get('/', function(request, response) {
 	//"Dolores", ["Josemaria","L"], "home", "56 Flea Bottom", "Kings Landing", "IL", "90210", "male", "2015-10-31", true);
 	//var entity = new Encounter("Encounter", "7491", "finished", "emergency", "556", "2015-11-26T20:12:00-04:00", "2015-11-26T20:12:00-04:00", 4, 6);
 	//var entity = new Observation("Observation", "41188",	new Coding("http://loinc.org", "3141-9", "Body weight Measured"),	new ValueQuantity(77.1, "kg", "http://unitsofmeasure.org", "kg"),	"2015-10-26T20:12:00-04:00", "final", "ok", "556", "7346");
+	//var entity = new Condition("Condition", "3190", "556", "7346", "5", new Coding("http://snomed.info/sct", "230265002", "Familial Alzheimer's disease of early onset"),	"Familial Alzheimer's disease of early onset, SNOMED-CT, 230265002", "confirmed", "2002-05-26T00:00:00-04:00");
 	//fhir.deleteResource(entity, function(resp) { response.send(resp);});
 
 });
