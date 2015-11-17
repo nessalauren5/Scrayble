@@ -20,8 +20,13 @@ SystemPackage.register(function(app, auth, database, circles) {
   SystemPackage.routes(app, auth, database);
 
   SystemPackage.aggregateAsset('css', 'common.css');
+
+  var libDir = "../lib/";
+  SystemPackage.aggregateAssets('css',libDir + "freelancer.css");
+  SystemPackage.aggregateAssets('css',libDir + "styles.css");
+  SystemPackage.aggregateAssets('css',libDir + "switchery.min.css");
   SystemPackage.angularDependencies(['mean-factory-interceptor']);
-  
+
 
   // The middleware in config/express will run before this code
 
@@ -32,7 +37,7 @@ SystemPackage.register(function(app, auth, database, circles) {
   if(config.favicon) {
     app.use(favicon(config.favicon));
   } else {
-    app.use(favicon(__dirname + '/public/assets/img/favicon.ico'));
+    app.use(favicon(__dirname + '/public/assets/lib/img/favicon.ico'));
   }
 
   // Adding robots and humans txt

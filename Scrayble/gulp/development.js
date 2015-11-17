@@ -8,15 +8,15 @@ var gulp = require('gulp'),
   coffee = require('gulp-coffee'),
   paths = {
     js: ['./*.js', 'config/**/*.js', 'gulp/**/*.js', 'tools/**/*.js', 'packages/**/*.js', '!packages/**/node_modules/**', '!packages/**/assets/**/lib/**', '!packages/**/assets/**/js/**'],
-    html: ['packages/**/*.html', '!packages/**/node_modules/**', '!packages/**/assets/**/lib/**'],
-    css: ['packages/**/*.css', '!packages/**/node_modules/**', '!packages/**/assets/**/lib/**','!packages/core/**/public/assets/css/*.css'],
-    less: ['packages/**/*.less', '!packages/**/node_modules/**', '!packages/**/assets/**/lib/**'],
-    sass: ['packages/**/*.scss', '!packages/**/node_modules/**', '!packages/**/assets/**/lib/**'],
-    coffee: ['packages/**/*.coffee', '!packages/**/node_modules/**', '!packages/**/assets/**/lib/**']
+    html: ['packages/**/*.html', '!packages/**/node_modules/**', '!packages/**/assets/lib/**'],
+    css: ['packages/**/*.css', '!packages/**/node_modules/**', '!packages/**/assets/lib/**','!packages/core/**/public/assets/css/*.css'],
+    less: ['packages/**/*.less', '!packages/**/node_modules/**', '!packages/**/assets/lib/**'],
+    sass: ['packages/**/*.scss', '!packages/**/node_modules/**', '!packages/**/assets/lib/**'],
+    coffee: ['packages/**/*.coffee', '!packages/**/node_modules/**', '!packages/**/assets/lib/**']
   };
 
 /*var defaultTasks = ['clean', 'jshint', 'less', 'csslint', 'devServe', 'watch'];*/
-var defaultTasks = ['coffee','clean', 'less', 'csslint', 'devServe', 'watch'];
+var defaultTasks = ['coffee','clean', 'less', 'csslint', 'devServe'];
 
 gulp.task('env:development', function () {
   process.env.NODE_ENV = 'development';
