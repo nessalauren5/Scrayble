@@ -2,6 +2,7 @@
 
 A Health Care Coordination Provider built on the MEAN stack
 #Scrayble Folder Structure
+```
 -- bower_components - dependencies install by bower
 -- bower.json - bower config file
 -- config - folder with env configurations
@@ -20,14 +21,19 @@ A Health Care Coordination Provider built on the MEAN stack
 ------------------ routes
 ------------------ views
 ----------------------- includes 
----------------------------- foot.html
+---------------------------- foot.html - footer template
+---------------------------- head.html - header template
+----------------------- layouts 
+---------------------------- default.html - default body template
 ------------- public
 ------------------ assets
 ----------------------- lib - all custom css,js, fonts are placed here
 ------------------ controller
 ------------------ routes
 ------------------ views
+---------------------------- index.html - html templates go here
 
+```
 #Run Instructions
 
 - Make sure your system has node, bower, and gulp installed
