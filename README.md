@@ -28,8 +28,8 @@ A Health Care Coordination Provider built on the MEAN stack
 ------------- public
 ------------------ assets
 ----------------------- lib - all custom css,js, fonts are placed here
------------------- controller
------------------- routes
+------------------ controller - angular controller
+------------------ routes  - angular routes
 ------------------ views
 ---------------------------- index.html - html templates go here
 
@@ -38,7 +38,15 @@ A Health Care Coordination Provider built on the MEAN stack
 
 - Make sure your system has node, bower, and gulp installed
 - In the console navigate to Scrayble/Scrayble directory
-- Run gulp 
+- Install node modules by typing the command
+```
+  npm install
+```
+- Build and Run by typing the command
+```
+  gulp
+```
+You should see the server start up...
 - Open Browser to localhost:3000
 
 #DB Configuration
