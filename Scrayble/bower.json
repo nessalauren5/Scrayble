@@ -1,7 +1,7 @@
 {
   "name": "mean",
   "dependencies": {
-    jquery": "latest",
+    "jquery": "latest",
       "angular": "latest",
       "angular-resource": "latest",
       "angular-cookies": "latest",
