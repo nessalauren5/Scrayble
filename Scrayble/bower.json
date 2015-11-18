@@ -1,0 +1,14 @@
+{
+  "name": "mean",
+  "dependencies": {
+    "jquery": "latest",
+      "angular": "latest",
+      "angular-resource": "latest",
+      "angular-cookies": "latest",
+      "angular-mocks": "latest",
+      "angular-route": "latest",
+      "bootstrap": "latest",
+      "angular-ui-router": "#master",
+      "angular-sanitize": "latest""
+  }
+}

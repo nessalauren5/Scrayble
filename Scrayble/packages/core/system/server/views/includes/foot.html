@@ -1,0 +1,23 @@
+<footer class="text-center">
+  <div class="footer-above">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+  <div class="footer-below">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          Copyright &copy; Scrayble 2015
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {% for file in aggregatedassets.footer.js %}
+    <script type="text/javascript" src="{{file}}"></script>
+  {% endfor %}
+
+</footer>
