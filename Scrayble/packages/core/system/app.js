@@ -19,25 +19,23 @@ SystemPackage.register(function(app, auth, database, circles) {
   //We enable routing. By default the Package Object is passed to the routes
   SystemPackage.routes(app, auth, database);
 
-  SystemPackage.aggregateAsset('css', 'common.css');
-
   var libDir = "../lib/";
-  SystemPackage.aggregateAssets('css',libDir + "css/freelancer.css");
-  SystemPackage.aggregateAssets('css',libDir + "css/styles.css");
-  SystemPackage.aggregateAssets('css',libDir + "css/switchery.min.css");
+  SystemPackage.aggregateAsset('css',libDir + "css/bootstrap.min.css");
+  SystemPackage.aggregateAsset('css',libDir + "css/font-awesome.min.css")
+
+  SystemPackage.aggregateAsset('css',libDir + "css/switchery.min.css");
+  SystemPackage.aggregateAsset('css',libDir + "css/freelancer.css");
 
 
-  SystemPackage.aggregateAssets('js',libDir + "js/bootstrap.min.js");
-  SystemPackage.aggregateAssets('js',libDir + "js/js/cbpAnimatedHeader.min.js");
-  SystemPackage.aggregateAssets('js',libDir + "js/classie.js");
-  SystemPackage.aggregateAssets('js',libDir + "js/contact_me.js");
-  SystemPackage.aggregateAssets('js',libDir + "js/jqBootstrapValidation.js");
-  SystemPackage.aggregateAssets('js',libDir + "js/jquery.js");
-  SystemPackage.aggregateAssets('js',libDir + "js/jquery.validate.js");
-  SystemPackage.aggregateAssets('js',libDir + "js/switchery.min.js");
+  SystemPackage.aggregateAsset('js',libDir + "js/jqBootstrapValidation.js");
+  SystemPackage.aggregateAsset('js',libDir + "js/jquery.validate.js");
+  SystemPackage.aggregateAsset('js',libDir + "js/bootstrap.min.js");
+
+  SystemPackage.aggregateAsset('js',libDir + "js/jquery.js");
 
 
-  SystemPackage.aggregateAssets('img',libDir + "img/profile.png");
+
+  SystemPackage.aggregateAsset('img',libDir + "img/profile.png");
   SystemPackage.angularDependencies(['mean-factory-interceptor']);
 
 

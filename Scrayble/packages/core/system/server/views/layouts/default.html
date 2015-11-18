@@ -2,8 +2,7 @@
 <html lang="en">
 {% include '../includes/head.html' %}
 
-<body data-ng-controller="ThemeController" ng-cloak class="ng-cloak" ng-class="state">
-<div class="wrapper">
+<body data-ng-controller="ThemeController" ng-cloak class="ng-cloak" ng-class="state" id="page-top" class="index">
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -39,56 +38,9 @@
     </div>
     <!-- /.container-fluid -->
   </nav>
+      {% block content %}{% endblock %}
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="intro-text">
-            <h2 class="text-center portfolio-text"><span id="sub-type"></span>Subscription</h2>
-
-            <div class="col-md-6 contact-form col-xs-offset-3">
-              <form role="form">
-                <div class="form-group">
-                  <input type="email" class="form-control form-effect" id="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control form-effect" id="pwd" placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Remember Me
-                    </label>
-                  </div>
-                </div>
-                <a href="home.html" class="btn btn-default btn-sub">Login</a>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-</div>
     {% include '../includes/foot.html' %}
 </body>
 
-
-
-
-
-
-
-<body data-ng-controller="ThemeController" ng-cloak class="ng-cloak" ng-class="state">
-    <div class="navbar navbar-inverse navbar-fixed-top" data-ng-include="'/system/views/header.html'" data-role="navigation"></div>
-    <div data-ng-include="'/admin/views/index.html'"></div>
-    <section class="content">
-        <section class="container">
-            {% block content %}{% endblock %}
-        </section>
-    </section>
-    {% include '../includes/foot.html' %}
-</body>
 </html>
