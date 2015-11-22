@@ -50,11 +50,11 @@ A Health Care Coordination Provider built on the MEAN stack
 - Navigate to Scrayble/Scrayble directory
 - Install Bower dependencies
 ```
-  bower install
+  bower install --allow-root
 ```
 - Install node modules by typing the command
 ```
-  npm install
+  sudo npm install
 ```
 
 - Build and Run by typing the command
