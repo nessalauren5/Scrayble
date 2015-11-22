@@ -41,16 +41,22 @@ A Health Care Coordination Provider built on the MEAN stack
   brew update
   sudo brew install nodejs
 ```
-- Install Bower and Gulp
+- Install Gulp, Bower and Mean CLI
 ```
- sudo npm install -g bower
  sudo npm install -g gulp
+ sudo npm install -g bower
+ sudo npm install -g mean-cli
 ```
 - Navigate to Scrayble/Scrayble directory
+- Install Bower dependencies
+```
+  bower install
+```
 - Install node modules by typing the command
 ```
   npm install
 ```
+
 - Build and Run by typing the command
 ```
   gulp
