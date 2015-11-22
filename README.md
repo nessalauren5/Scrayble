@@ -36,8 +36,17 @@ A Health Care Coordination Provider built on the MEAN stack
 ```
 #Run Instructions
 
-- Make sure your system has node, bower, and gulp installed
-- In the console navigate to Scrayble/Scrayble directory
+- Install Node (example below using brew on Mac OS) 
+```
+  brew update
+  sudo brew install nodejs
+```
+- Install Bower and Gulp
+```
+ sudo npm install -g bower
+ sudo npm install -g gulp
+```
+- Navigate to Scrayble/Scrayble directory
 - Install node modules by typing the command
 ```
   npm install
