@@ -54,8 +54,9 @@ A Health Care Coordination Provider built on the MEAN stack
 ```
 - Install node modules by typing the command
 ```
-  sudo npm install
+  sudo npm i
 ```
+- Copy lib folder into Scayable/Scrayble/packages/core/system/public/assets
 
 - Build and Run by typing the command
 ```
