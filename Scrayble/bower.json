@@ -9,6 +9,6 @@
       "angular-route": "latest",
       "bootstrap": "latest",
       "angular-ui-router": "#master",
-      "angular-sanitize": "latest""
+      "angular-sanitize": "latest"
   }
 }
