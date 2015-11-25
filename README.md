@@ -6,7 +6,7 @@ A Health Care Coordination Provider built on the MEAN stack
 -- bower_components - dependencies install by bower
 -- bower.json - bower config file
 -- config - folder with env configurations
--- gulp 
+-- gulp
 -- gulpfile.js - gulp config file
 -- logs
 -- node_modules - node dependencies (installed after running npm)
@@ -16,14 +16,14 @@ A Health Care Coordination Provider built on the MEAN stack
 ----- core
 -------- system
 ------------- app.js - file to configure custom resources see assets/lib
-------------- server 
+------------- server
 ------------------ controller
 ------------------ routes
 ------------------ views
------------------------ includes 
+----------------------- includes
 ---------------------------- foot.html - footer template
 ---------------------------- head.html - header template
------------------------ layouts 
+----------------------- layouts
 ---------------------------- default.html - default body template
 ------------- public
 ------------------ assets
@@ -34,9 +34,18 @@ A Health Care Coordination Provider built on the MEAN stack
 ---------------------------- index.html - html templates go here
 
 ```
+
+#Shell Script Option:
+
+- Run
+```
+sudo ./Scrayble/buildNPMandBower.sh
+```
+This will fix all dependencies and start the server on port 3000
+
 #Run Instructions
 
-- Install Node (example below using brew on Mac OS) 
+- Install Node (example below using brew on Mac OS)
 ```
   brew update
   sudo brew install nodejs
@@ -73,7 +82,3 @@ In order to connect to an mongo db, the url of should be placed on line of the c
   db: 'mongodb://admin:admin@ds055564.mongolab.com:55564/scraybledb'
 ```
 To access the cloud db you can login here: https://mongolab.com/databases/scraybledb or you can configure the file above to whatever instance you wish.
-
-
-
-
