@@ -2,75 +2,85 @@ package Entities;
 
 import org.json.*;
 
-public class Patient {
+public class Patient extends Entity {
 
-	private JSONObject patient;
-	private String resourceType;
-	private String id;
-	private JSONObject text;
-	private Name name;
-	private Address address;
-	private String gender;
-	private String birthDate;
-	private boolean active;
+//	private JSONObject text;
+//	private Name name;
+//	private Address address;
+//	private String gender;
+//	private String birthDate;
+//	private boolean active;
 
 	public Patient(String resourceType, String id, JSONObject text, Name name, Address address,
 			String gender, String birthDate, boolean active) {
-		
-		patient = new JSONObject();
-		patient.put("resourceType", resourceType);
-		if(id != "" && id != null) {
-			patient.put("id", id);
-		}
+		super(resourceType, id, null);
 		if(text != null) {
-			patient.put("text", text);
+			super.entity.put("text", text);
 		}
 		if(name != null) {
-			patient.put("name", name.getJSONObject());
+			super.entity.put("name", name.getJSONObject());
 		}
 		if(address != null) {
-			patient.put("address", address.getJSONObject());
+			super.entity.put("address", address.getJSONObject());
 		}
-		patient.put("gender", gender);
-		patient.put("birthDate", birthDate);
-		patient.put("active", active);
+		super.entity.put("gender", gender);
+		super.entity.put("birthDate", birthDate);
+		super.entity.put("active", active);
 		
-		this.resourceType = resourceType;
-		this.id = id;
-		this.text = text;
-		this.name = name;
-		this.address = address;
-		this.gender = gender;
-		this.birthDate = birthDate;
-		this.active = active;
+//		this.text = text;
+//		this.name = name;
+//		this.address = address;
+//		this.gender = gender;
+//		this.birthDate = birthDate;
+//		this.active = active;
 	}
 	
-	public JSONObject getJSONObject() {
-		return patient;
-	}
+	public Patient(String json) {
+		super(null, null, json);
+//		JSONObject text = super.entity.getJSONObject("text");
+//		Name name = getFirstName(); 
+//		Address address = getFirstAddress();
+//		String gender = super.entity.getString("gender"); 
+//		String birthDate = super.entity.getString("birthDate"); 
+//		boolean active = super.entity.getBoolean("active");
 	
-	public String prettyPrint() {
-		String n = "";
-		if(name != null) {
-			n = this.name.prettyPrint();
-		}
-		String a = "";
-		if(address != null) {
-			a = this.address.prettyPrint();
-		}
-		String t = "";
-		if(text != null) {
-			t = " Text: " +  this.text.toString();
-		}
-		return "Resource Type: " + this.resourceType
-				+ " ID: " + this.id
-				+ t
-				+ n
-				+ a
-				+ " Gender: " + this.gender
-				+ " Birth Date: " + this.birthDate
-				+ " Active: " + this.active;
-	};
+		
+//		if(text != null) {
+//			super.entity.put("text", text);
+//		}
+//		if(name != null) {
+//			super.entity.put("name", name.getJSONObject());
+//		}
+//		if(address != null) {
+//			super.entity.put("address", address.getJSONObject());
+//		}
+//		super.entity.put("gender", gender);
+//		super.entity.put("birthDate", birthDate);
+//		super.entity.put("active", active);
+	}
+//	public String prettyPrint() {
+//		
+//		String n = "";
+//		if(name != null) {
+//			n = this.name.prettyPrint();
+//		}
+//		String a = "";
+//		if(address != null) {
+//			a = this.address.prettyPrint();
+//		}
+//		String t = "";
+//		if(text != null) {
+//			t = " Text: " +  this.text.toString();
+//		}
+//		return "Resource Type: " + this.resourceType
+//				+ " ID: " + this.id
+//				+ t
+//				+ n
+//				+ a
+//				+ " Gender: " + this.gender
+//				+ " Birth Date: " + this.birthDate
+//				+ " Active: " + this.active;
+//	};
 
 //	public String jsonPrint() {
 //		String n = "";
@@ -106,40 +116,26 @@ public class Patient {
 //		}
 //		return output;
 //	}
-		
-	public static Patient getByText(String json) {
-		JSONObject patient = new JSONObject(json);
-		String resourceType = patient.getString("resourceType"); 
-		String id = patient.getString("id"); 
-		JSONObject text = patient.getJSONObject("text");
-		String gender = patient.getString("gender"); 
-		String birthDate = patient.getString("birthDate"); 
-		boolean active = patient.getBoolean("active"); 
-		
-	  return new Patient(resourceType, id, text,
-			  getFirstName(patient), getFirstAddress(patient),
-			  gender, birthDate, active);
-	}
 	
-	private static Name getFirstName(JSONObject json) {
-		JSONArray arr = json.getJSONArray("name");
-		for (int i = 0; i < arr.length();)
-		{
-		    return new Name(arr.getJSONObject(i).getJSONArray("family"), arr.getJSONObject(i).getJSONArray("given"));
-		}
-		return null;
-	}
-	
-	private static Address getFirstAddress(JSONObject json) {
-		JSONArray arr = json.getJSONArray("address");
-		for (int i = 0; i < arr.length();)
-		{
-		    return new Address(arr.getJSONObject(i).getString("use"),
-		    		arr.getJSONObject(i).getJSONArray("line"),
-		    		arr.getJSONObject(i).getString("city"),
-		    		arr.getJSONObject(i).getString("state"),
-		    		arr.getJSONObject(i).getString("postalCode"));
-		}
-		return null;
-	}
+//	private  Name getFirstName() {
+//		JSONArray arr = super.entity.getJSONArray("name");
+//		for (int i = 0; i < arr.length();)
+//		{
+//		    return new Name(arr.getJSONObject(i).getJSONArray("family"), arr.getJSONObject(i).getJSONArray("given"));
+//		}
+//		return null;
+//	}
+//	
+//	private Address getFirstAddress() {
+//		JSONArray arr = super.entity.getJSONArray("address");
+//		for (int i = 0; i < arr.length();)
+//		{
+//		    return new Address(arr.getJSONObject(i).getString("use"),
+//		    		arr.getJSONObject(i).getJSONArray("line"),
+//		    		arr.getJSONObject(i).getString("city"),
+//		    		arr.getJSONObject(i).getString("state"),
+//		    		arr.getJSONObject(i).getString("postalCode"));
+//		}
+//		return null;
+//	}
 }
