@@ -1,48 +1,44 @@
 package Entities;
 
-public class User {
+public class User extends Entity {
 
-	private String userName;
-	private String userFullName;
-	private String userPassword;
-	private String userType;
-	
 	public User(String userName, String userFullName, String userPassword, String userType) {
-		this.userName = userName;
-		this.userFullName = userFullName;
-		this.userPassword = userPassword;
-		this.userType = userType;
+		super("User", null, null);
+		entity.put("userName", userName);
+		entity.put("userFullName", userFullName);
+		entity.put("userPassword", userPassword);
+		entity.put("userType", userType);
 	}
 	
 	public String getUserName() {
-		return userName;
+		return entity.getString("userName");
 	}
 
 	public void setUserName(String userName) {
-		this.userName = userName;
+		entity.put("userName", userName);
 	}
 
 	public String getUserFullName() {
-		return userFullName;
+		return entity.getString("userFullName");
 	}
 
 	public void setUserFullName(String userFullName) {
-		this.userFullName = userFullName;
+		entity.put("userFullName", userFullName);
 	}
 
 	public String getUserPassword() {
-		return userPassword;
+		return entity.getString("userPassword");
 	}
 
 	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+		entity.put("userPassword", userPassword);
 	}
 
 	public String getUserType() {
-		return userType;
+		return entity.getString("userType");
 	}
 
 	public void setUserType(String userType) {
-		this.userType = userType;
+		entity.put("userType", userType);
 	}
 }

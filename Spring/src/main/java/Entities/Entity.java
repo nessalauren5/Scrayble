@@ -5,8 +5,6 @@ import org.json.JSONObject;
 public abstract class Entity {
 
 	protected JSONObject entity;
-//	protected String resourceType;
-//	protected String id;
 	
 	public Entity(String resourceType, String id, String json) {
 		if(json != "" && json != null) {
@@ -14,19 +12,23 @@ public abstract class Entity {
 		} else {
 			entity = new JSONObject();
 			entity.put("resourceType", resourceType);
-			if(id != "" && id != null) {
-				entity.put("id", id);
-			}
+			setId(id);
 		}
-//		resourceType = resourceType;
-//		id = id;
 	}
 	
-	//Properties
 	public String getResourceType() {
 		return entity.getString("resourceType");
 	}
-//	public String getId() { return resourceType; }
+	
+	public String getId() {
+		return entity.getString("id");
+	}
+	
+	public void setId(String id) {
+		if(id != "" && id != null) {
+			entity.put("id", id);
+		}
+	}
 	
 	public JSONObject getJSONObject() {
 		return entity;

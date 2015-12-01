@@ -16,7 +16,6 @@ public class ScraybleController {
 	private CarePlans carePlans = CarePlans.GetCarePlans();
 	
 	private void initializeDummyData() {
-		users.put("Bill", new User("Bill", "Bill Patient", "Bill", "Patient"));
 		users.put("Sally", new User("Sally", "Sally Aide", "Sally", "Aide"));
 		users.put("Peter", new User("Peter", "Peter Primary", "Peter", "PCP"));
 		users.put("Sandra", new User("Sandra", "Sandra Specialist", "Sandra", "Specialist"));
@@ -24,6 +23,8 @@ public class ScraybleController {
 				new Address("home", "123 Alzheimers Lane", "Atlanta", "GA", "90210"),
 				"male", "2015-12-01", true);
 		String billId = GaTechProxy.post(p);
+		System.out.println("Bill ID: " + billId);
+		users.put(billId, new User("Bill", "Bill Patient", "Bill", "Patient"));
 		patients.put(billId, p);
 		
 		//Associate Bill the user with Bill the Patient.
@@ -46,19 +47,23 @@ public class ScraybleController {
     	return "User Logout";
     }
 
-    @RequestMapping(value = "/user/{userName}", method=RequestMethod.GET)
-	public String getUserByName(@PathVariable("userName") String userName) {
-    	return "Get User By User Name";
+    @RequestMapping(value = "/user/{Id}", method=RequestMethod.GET)
+	public String getUserById(@PathVariable("Id") String id) {
+    	User u = users.get(id);
+    	if(u != null) {
+        	return u.getJSONObject().toString();
+    	}
+    	return "{}";
     }
 
-    @RequestMapping(value = "/user/{userName}", method=RequestMethod.POST)
-	public String updateUserByName(@PathVariable("userName") String userName) {
-    	return "Update User By User Name";
+    @RequestMapping(value = "/user/{Id}", method=RequestMethod.POST)
+	public String updateUserById(@PathVariable("Id") String id) {
+    	return "Update User By User ID";
     }
 
-    @RequestMapping(value = "/user/{userName}", method=RequestMethod.DELETE)
-	public String deleteUserByName(@PathVariable("userName") String userName) {
-    	return "Delete User By User Name";
+    @RequestMapping(value = "/user/{Id}", method=RequestMethod.DELETE)
+	public String deleteUserByName(@PathVariable("Id") String id) {
+    	return "Delete User By User ID";
     }
 
     @RequestMapping(value = "/Condition/{Id}", method=RequestMethod.GET)

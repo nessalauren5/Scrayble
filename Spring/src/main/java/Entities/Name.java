@@ -5,36 +5,36 @@ import org.json.JSONObject;
 
 public class Name {
 
-	private JSONObject name;
-	private JSONArray given;
-	private JSONArray family;
+	private JSONArray name;
 
 	public Name(String family, String given) {
-		JSONArray g = new JSONArray();
-		g.put(given);
-		//JSONArray f = new JSONArray();
-		//f.put(family);
-		name = new JSONObject();
-		name.put("famiy", family);
-		name.put("given", g);
-//		this.family = f;
-//		this.given = g;
+		
+		JSONArray ga = new JSONArray();
+		ga.put(given);
+		name = new JSONArray();
+		JSONObject nameO = new JSONObject();
+		nameO.put("family", family);
+		nameO.put("given", ga);
+		name.put(nameO);
 	}
 	
-//	public Name(JSONArray family, JSONArray given) {
-//		name = new JSONObject();
-//		name.put("famiy", family);
-//		name.put("given", given);
-//		this.family = family;
-//		this.given = given;
-//	}
-	
-	public JSONObject getJSONObject() {
+	public JSONArray getJSONObject() {
 		return name;
 	}
-	
-//	public String prettyPrint() {
-//		return "Given: " + this.given
-//		+ " Family: " + this.family;
-//	};
+
+//	public JSONArray getGiven() {
+//		return given;
+//	}
+//
+//	public void setGiven(JSONArray given) {
+//		this.given = given;
+//	}
+//
+//	public JSONArray getFamily() {
+//		return family;
+//	}
+//
+//	public void setFamily(JSONArray family) {
+//		this.family = family;
+//	}
 }
