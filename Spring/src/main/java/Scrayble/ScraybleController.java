@@ -162,9 +162,13 @@ public class ScraybleController {
     	return "{}";
     }
 
-    @RequestMapping(value = "/Patient", method=RequestMethod.POST)
-	public @ResponseBody Patient createPatient(Patient newPatient) {
-
-    	return newPatient;
+    @RequestMapping(value = "/PatientHistory", method=RequestMethod.POST)
+	public @ResponseBody PatientHistory createPatientHistory(PatientHistory ph, int patientId) {
+    	return ph;
+    }
+    
+    @RequestMapping(value = "/CarePlan", method=RequestMethod.POST)
+	public @ResponseBody CarePlan createPatient(CarePlan cp, int patientId) {
+    	return cp;
     }
  }
