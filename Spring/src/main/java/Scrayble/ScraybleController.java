@@ -118,7 +118,13 @@ public class ScraybleController {
     @RequestMapping(value = "/Patient/{Id}", method=RequestMethod.GET)
 	public String getPatient(@PathVariable("Id") String id) {
     	String json = GaTechProxy.get("Patient", id);
-    	return new Patient(json).getJSONObject().toString();
+    	Patient patientFromFHIR = new Patient(json);
+    	Patient patientFromLocal = patients.get(id);
+    	if(patientFromLocal != null) {
+    		patientFromLocal.sync(patientFromFHIR);
+        	return patientFromLocal.getJSONObject().toString();
+    	}
+       	return patientFromFHIR.getJSONObject().toString();
     }
 
     @RequestMapping(value = "/Patient/{Id}/CarePlan", method=RequestMethod.GET)
@@ -135,12 +141,4 @@ public class ScraybleController {
 
     	return newPatient;
     }
-    
-    @RequestMapping(value = "/Patient", method=RequestMethod.GET)
-	public String createPatientTest() {
-		Patient p = new Patient("Patient", "", null, new Name("Patient", "Bill"),
-				new Address("home", "123 Alzheimers Lane", "Atlanta", "GA", "90210"),
-				"male", "2015-12-01", true);
-		return GaTechProxy.post(p);
-    }
-}
+ }
