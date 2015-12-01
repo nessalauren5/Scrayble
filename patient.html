@@ -29,6 +29,7 @@
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+
 </head>
 
 <body id="page-top" class="index">
@@ -115,7 +116,7 @@
                 <img src="http://placehold.it/150x150" />
               </div>
                 <div class="col-md-10">
-                    <h3>Megan Hutser</h3>
+                    <h3 id="name"></h3>
                     <h5>Home Health Aid: Sandy Patterson</h5>
                     <h5>Medical ID: 764793-34</h5>
                 </div>
@@ -221,6 +222,21 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
+    <script >
+    $( document ).ready(function() {
+      var patient = $.ajax({
+      method: "GET",
+      url: "http://localhost:8080/Patient/1",
+      dataType: 'jsonp'
+        }).done(function(data){
+          console.log(data);
+          var p = $.parseJSON(data);
+          console.log(p.user);
+          $('#name').append(p.user);
+        });
+    });
+
+    </script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
