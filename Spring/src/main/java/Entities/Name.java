@@ -6,16 +6,16 @@ import org.json.JSONObject;
 public class Name {
 
 	private JSONObject name;
-//	private JSONArray given;
-//	private JSONArray family;
+	private JSONArray given;
+	private JSONArray family;
 
 	public Name(String family, String given) {
 		JSONArray g = new JSONArray();
 		g.put(given);
-		JSONArray f = new JSONArray();
-		f.put(family);
+		//JSONArray f = new JSONArray();
+		//f.put(family);
 		name = new JSONObject();
-		name.put("famiy", f);
+		name.put("famiy", family);
 		name.put("given", g);
 //		this.family = f;
 //		this.given = g;

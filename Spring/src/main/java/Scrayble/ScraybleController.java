@@ -10,8 +10,33 @@ import Fhir.*;
 
 @RestController
 public class ScraybleController {
+	
+	private Users users = Users.GetUsers();
+	private Patients patients = Patients.GetPatients();
+	private CarePlans carePlans = CarePlans.GetCarePlans();
+	
+	private void initializeDummyData() {
+		users.put("Bill", new User("Bill", "Bill Patient", "Bill", "Patient"));
+		users.put("Sally", new User("Sally", "Sally Aide", "Sally", "Aide"));
+		users.put("Peter", new User("Peter", "Peter Primary", "Peter", "PCP"));
+		users.put("Sandra", new User("Sandra", "Sandra Specialist", "Sandra", "Specialist"));
+		Patient p = new Patient("Patient", "", null, new Name("Patient", "Bill"),
+				new Address("home", "123 Alzheimers Lane", "Atlanta", "GA", "90210"),
+				"male", "2015-12-01", true);
+		String billId = GaTechProxy.post(p);
+		patients.put(billId, p);
+		
+		//Associate Bill the user with Bill the Patient.
+		p.setUser(users.get("Bill"));
+		
+		//Associate Bill with his Care Plan.
+		carePlans.put(billId, new CarePlan(p));	}
 
-    @RequestMapping(value = "/user/login", method=RequestMethod.GET)
+	public ScraybleController() {
+		initializeDummyData();
+	}
+
+	@RequestMapping(value = "/user/login", method=RequestMethod.GET)
 	public String userLogin() {
     	return "User Login";
     }
@@ -97,16 +122,17 @@ public class ScraybleController {
 			@PathVariable("PostalCode") String postalCode,
 			@PathVariable("Gender") String gender,
 			@PathVariable("BirthDate") String birthDate) {
-		Patient p = new Patient("Patient", "", null, new Name(family, given),
-				new Address(use, line, city, state, postalCode),
-				gender, birthDate, true);
-		return GaTechProxy.post(p);
+//		Patient p = new Patient("Patient", "", null, new Name(family, given),
+//				new Address(use, line, city, state, postalCode),
+//				gender, birthDate, true);
+//		return GaTechProxy.post(p);
+    	return "";
     }
     
     @RequestMapping(value = "/Patient/Test", method=RequestMethod.POST)
 	public String createPatientTest() {
-		Patient p = new Patient("Patient", "", null, new Name("Jones", "Miller"),
-				new Address("home", "56FleaBottom", "KingsLanding", "NJ", "90210"),
+		Patient p = new Patient("Patient", "", null, new Name("Patient", "Bill"),
+				new Address("home", "123 Alzheimers Lane", "Atlanta", "GA", "90210"),
 				"male", "2015-12-01", true);
 		return GaTechProxy.post(p);
     }

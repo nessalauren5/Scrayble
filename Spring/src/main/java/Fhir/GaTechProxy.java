@@ -50,7 +50,8 @@ public class GaTechProxy {
 	}
 	
 	public static String post(Entity entity) {
-		StringBuilder sb = new StringBuilder();
+		//StringBuilder sb = new StringBuilder();
+		String id = "";
 		try {
 		    StringEntity se = new StringEntity(entity.getJSONObject().toString());
 			HttpClient httpClient = HttpClientBuilder.create().build();
@@ -62,14 +63,15 @@ public class GaTechProxy {
 //		    for (Header header : response.getAllHeaders()) {
 //				sb.append(header.getName()).append(" ").append(header.getValue()).append(" ");
 //			}
-		    String id =  response.getHeaders("Location")[0].getValue().replace("http://polaris.i3l.gatech.edu:8080/gt-fhir-webapp/base/"+entity.getResourceType()+"/", "");
-		    sb.append("ID: ").append(id);
+		    id =  response.getHeaders("Location")[0].getValue().replace("http://polaris.i3l.gatech.edu:8080/gt-fhir-webapp/base/"+entity.getResourceType()+"/", "");
+		    //sb.append("ID: ").append(id);
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return sb.toString();
+		//return sb.toString();
+		return id;
 	}
 	
 	private static String getURL(String resource, String id) {
