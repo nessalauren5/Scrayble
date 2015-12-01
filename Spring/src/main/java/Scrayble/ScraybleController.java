@@ -25,6 +25,23 @@ public class ScraybleController {
 				"male", "2015-12-01", true);
 		String billId = GaTechProxy.post(p);
 		p.setId(billId);
+		PatientHistory ph = new PatientHistory(billId);
+		ph.setEmployer("Georgia Tech");
+		ph.setEmergencyContact("Mark Braunstein");
+		ph.setEmployerAddress("123 Atlanta Drive");
+		ph.setEmergencyContactAddress("123 Georgia Drive");
+		ph.setHeight(5.5);
+		ph.setWeight(172.2);
+		ph.setCaffeine(true);
+		ph.setTobacco(true);
+		ph.setAlcohol(true);
+		ph.setImmunized(true);
+		ph.setWasHospitalized(true);
+		ph.setHomeNurseAide("Sally Aide");
+		ph.setLanguage("English");
+		ph.setEmergencyContactRelation("Friend");
+		ph.setLastHomeVisit("2015-12-01");
+		p.setPatientHistory(ph);
 		System.out.println("Bill ID: " + billId);
 		users.put(billId, new User("Bill", "Bill Patient", "Bill", "Patient"));
 		patients.put(billId, p);
@@ -125,6 +142,15 @@ public class ScraybleController {
         	return patientFromLocal.getJSONObject().toString();
     	}
        	return patientFromFHIR.getJSONObject().toString();
+    }
+
+    @RequestMapping(value = "/PatientHistory/{Id}", method=RequestMethod.GET)
+	public String getPatientHistory(@PathVariable("Id") String id) {
+    	Patient patientFromLocal = patients.get(id);
+    	if(patientFromLocal != null) {
+        	return patientFromLocal.getPatientHistory().getJSONObject().toString();
+    	}
+       	return "{}";
     }
 
     @RequestMapping(value = "/Patient/{Id}/CarePlan", method=RequestMethod.GET)
