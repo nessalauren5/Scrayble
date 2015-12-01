@@ -222,25 +222,25 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-    <script >
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
     $( document ).ready(function() {
       var patient = $.ajax({
       method: "GET",
       url: "http://localhost:8080/Patient/1",
       dataType: 'jsonp'
-        }).done(function(data){
+        }).always(function(data){
           console.log(data);
-          var p = $.parseJSON(data);
-          console.log(p.user);
-          $('#name').append(p.user);
+//          var p = $.parseJSON(data);
+//          console.log(p.user);
+//          $('#name').append(p.user);
         });
     });
 
     </script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
   </body>
 
   </html>
