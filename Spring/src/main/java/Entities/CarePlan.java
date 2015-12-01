@@ -2,156 +2,131 @@ package Entities;
 
 import java.time.LocalDate;
 
-public class CarePlan {
+public class CarePlan extends Entity {
 	
+	private static final String NOTES = "notes";
+	private static final String ELECTRO_TREATEMENT = "electroTreatement";
+	private static final String HOME_EXERCISE_PROGRAM = "homeExerciseProgram";
+	private static final String EVAL_OF_PCP = "evalofPcp";
+	private static final String ULTRA_SOUND = "ultraSound";
+	private static final String TRANSFER_TRAINING = "transferTraining";
+	private static final String MUSCLE_REEDUCATION = "muscleReeducation";
+	private static final String CARDIO_TREATMENT = "cardioTreatment";
+	private static final String PROSTHETIC_TRAINING = "prostheticTraining";
+	private static final String GAIT_TRAINING = "gaitTraining";
+	private static final String PT_EVAL_DATE = "ptEvalDate";
+	private static final String PT_EVAL = "ptEval";
+	private static final String HOME_HEALTH_AIDE = "homeHealthAide";
+	private static final String PHYSICIAN = "physician";
+	private static final String CARE_PLAN = "CarePlan";
+
 	private Patient patient;
 	private LocalDate createDate;
 	private LocalDate updateDate;
-	private String physician;
-	private String homeHealthAide;
-	private boolean ptEval;
-	private String ptEvalDate;
-	private boolean gaitTraining;
-	private boolean prostheticTraining;
-	private boolean cardioTreatment;
-	private boolean muscleReeducation;
-	private boolean transferTraining;
-	private boolean ultraSound;
-	private boolean evalofPcp;
-	private boolean homeExerciseProgram;
-	private boolean electroTreatement;
-	private String notes;
-	
+
 	public CarePlan(Patient patient) {
+		super(CARE_PLAN, CARE_PLAN + patient.getId(), null);
 		this.patient = patient;
 		LocalDate now = LocalDate.now();
-		this.createDate = now;
-		this.setUpdateDate(now);
+		createDate = now;
+		setUpdateDate(now);
+		setPhysician("");
+		setHomeHealthAide("");
+		setPtEval(false);
+		setPtEvalDate(now.toString());
+		setCardioTreatment(false);
+		setProstheticTraining(false);
+		setGaitTraining(false);
+		setMuscleReeducation(false);
+		setTransferTraining(false);
+		setUltraSound(false);
+		setEvalofPcp(false);
+		setHomeExerciseProgram(false);
+		setElectroTreatement(false);
+		setNotes("");
 	}
 
-	public String getPhysician() {
-		return physician;
-	}
-
+	public String getPhysician() { return entity.getString(PHYSICIAN); }
 	public void setPhysician(String physician) {
-		this.physician = physician;
+		entity.put(PHYSICIAN, physician);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public String getHomeHealthAide() {
-		return homeHealthAide;
-	}
-
+	public String getHomeHealthAide() { return entity.getString(HOME_HEALTH_AIDE); }
 	public void setHomeHealthAide(String homeHealthAide) {
-		this.homeHealthAide = homeHealthAide;
+		entity.put(HOME_HEALTH_AIDE, homeHealthAide);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public boolean isPtEval() {
-		return ptEval;
-	}
-
+	public boolean isPtEval() {	return entity.getBoolean(PT_EVAL); }
 	public void setPtEval(boolean ptEval) {
-		this.ptEval = ptEval;
+		entity.put(PT_EVAL, ptEval);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public String getPtEvalDate() {
-		return ptEvalDate;
-	}
-
+	public String getPtEvalDate() {	return entity.getString(PT_EVAL_DATE); }
 	public void setPtEvalDate(String ptEvalDate) {
-		this.ptEvalDate = ptEvalDate;
+		entity.put(PT_EVAL_DATE, ptEvalDate);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public boolean isGaitTraining() {
-		return gaitTraining;
-	}
-
+	public boolean isGaitTraining() { return entity.getBoolean(GAIT_TRAINING);	}
 	public void setGaitTraining(boolean gaitTraining) {
-		this.gaitTraining = gaitTraining;
+		entity.put(GAIT_TRAINING, gaitTraining);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public boolean isProstheticTraining() {
-		return prostheticTraining;
-	}
-
+	public boolean isProstheticTraining() { return entity.getBoolean(PROSTHETIC_TRAINING);	}
 	public void setProstheticTraining(boolean prostheticTraining) {
-		this.prostheticTraining = prostheticTraining;
+		entity.put(PROSTHETIC_TRAINING, prostheticTraining);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public boolean isCardioTreatment() {
-		return cardioTreatment;
-	}
-
+	public boolean isCardioTreatment() { return entity.getBoolean(CARDIO_TREATMENT); }
 	public void setCardioTreatment(boolean cardioTreatment) {
-		this.cardioTreatment = cardioTreatment;
+		entity.put(CARDIO_TREATMENT, cardioTreatment);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public boolean isMuscleReeducation() {
-		return muscleReeducation;
-	}
-
+	public boolean isMuscleReeducation() { return entity.getBoolean(MUSCLE_REEDUCATION); }
 	public void setMuscleReeducation(boolean muscleReeducation) {
-		this.muscleReeducation = muscleReeducation;
+		entity.put(MUSCLE_REEDUCATION, muscleReeducation);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public boolean isTransferTraining() {
-		return transferTraining;
-	}
-
+	public boolean isTransferTraining() { return entity.getBoolean(TRANSFER_TRAINING); }
 	public void setTransferTraining(boolean transferTraining) {
-		this.transferTraining = transferTraining;
+		entity.put(TRANSFER_TRAINING, transferTraining);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public boolean isUltraSound() {
-		return ultraSound;
-	}
-
+	public boolean isUltraSound() { return entity.getBoolean(ULTRA_SOUND); }
 	public void setUltraSound(boolean ultraSound) {
-		this.ultraSound = ultraSound;
+		entity.put(ULTRA_SOUND, ultraSound);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public boolean isEvalofPcp() {
-		return evalofPcp;
-	}
-
+	public boolean isEvalofPcp() { return entity.getBoolean(EVAL_OF_PCP); }
 	public void setEvalofPcp(boolean evalofPcp) {
-		this.evalofPcp = evalofPcp;
+		entity.put(EVAL_OF_PCP, evalofPcp);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public boolean isHomeExerciseProgram() {
-		return homeExerciseProgram;
-	}
-
+	public boolean isHomeExerciseProgram() { return entity.getBoolean(HOME_EXERCISE_PROGRAM); }
 	public void setHomeExerciseProgram(boolean homeExerciseProgram) {
-		this.homeExerciseProgram = homeExerciseProgram;
+		entity.put(HOME_EXERCISE_PROGRAM, homeExerciseProgram);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public boolean isElectroTreatement() {
-		return electroTreatement;
-	}
-
+	public boolean isElectroTreatement() { return entity.getBoolean(ELECTRO_TREATEMENT); }
 	public void setElectroTreatement(boolean electroTreatement) {
-		this.electroTreatement = electroTreatement;
+		entity.put(ELECTRO_TREATEMENT, electroTreatement);
 		this.setUpdateDate(LocalDate.now());
 	}
 
-	public String getNotes() {
-		return notes;
-	}
-
+	public String getNotes() { return entity.getString(NOTES); }
 	public void setNotes(String notes) {
-		this.notes = notes;
+		entity.put(NOTES, notes);
 		this.setUpdateDate(LocalDate.now());
 	}
 

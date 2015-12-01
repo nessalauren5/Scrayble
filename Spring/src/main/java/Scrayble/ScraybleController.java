@@ -23,6 +23,7 @@ public class ScraybleController {
 				new Address("home", "123 Alzheimers Lane", "Atlanta", "GA", "90210"),
 				"male", "2015-12-01", true);
 		String billId = GaTechProxy.post(p);
+		p.setId(billId);
 		System.out.println("Bill ID: " + billId);
 		users.put(billId, new User("Bill", "Bill Patient", "Bill", "Patient"));
 		patients.put(billId, p);
@@ -31,7 +32,18 @@ public class ScraybleController {
 		p.setUser(users.get("Bill"));
 		
 		//Associate Bill with his Care Plan.
-		carePlans.put(billId, new CarePlan(p));	}
+		CarePlan cp = new CarePlan(p);//carePlans.get("CarePlan"+billId);
+		cp.setPhysician("Peter Primary");
+		cp.setHomeHealthAide("Sally Aide");
+		cp.setPtEval(true);
+		cp.setCardioTreatment(true);
+		cp.setUltraSound(true);
+		cp.setEvalofPcp(true);
+		cp.setHomeExerciseProgram(true);
+		cp.setNotes("Bill You're Doing Great!");
+		
+		carePlans.put("CarePlan" + billId, cp);
+	}
 
 	public ScraybleController() {
 		initializeDummyData();
@@ -110,8 +122,11 @@ public class ScraybleController {
 
     @RequestMapping(value = "/Patient/{Id}/CarePlan", method=RequestMethod.GET)
 	public String getPatientCarePlan(@PathVariable("Id") String id) {
-    	//String json = GaTechProxy.get("Patient", id);
-    	return "Get Care Plan for Patient with ID: " + id + " from DB and send back to UI.";
+    	CarePlan cp = carePlans.get("CarePlan"+id);
+    	if(cp != null) {
+        	return cp.getJSONObject().toString();
+    	}
+    	return "{}";
     }
 
     @RequestMapping(value = "/Patient?family={Family}&given={Given}&"
