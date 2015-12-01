@@ -1,4 +1,4 @@
-package hello;
+package Scrayble;
 
 import java.util.Arrays;
 
