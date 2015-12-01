@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import Entities.*;
 import Fhir.*;
@@ -129,27 +130,13 @@ public class ScraybleController {
     	return "{}";
     }
 
-    @RequestMapping(value = "/Patient?family={Family}&given={Given}&"
-    		+ "use={Use}&line={Line}&city={City}&state={State}&postalCode={postalCode}&"
-    		+ "gender={Gender}&birthDate={birthDate}", method=RequestMethod.POST)
-	public String createPatient(
-			@PathVariable("Family") String family,
-			@PathVariable("Given") String given,
-			@PathVariable("Use") String use,
-			@PathVariable("Line") String line,
-			@PathVariable("City") String city,
-			@PathVariable("State") String state,
-			@PathVariable("PostalCode") String postalCode,
-			@PathVariable("Gender") String gender,
-			@PathVariable("BirthDate") String birthDate) {
-//		Patient p = new Patient("Patient", "", null, new Name(family, given),
-//				new Address(use, line, city, state, postalCode),
-//				gender, birthDate, true);
-//		return GaTechProxy.post(p);
-    	return "";
+    @RequestMapping(value = "/Patient", method=RequestMethod.POST)
+	public @ResponseBody Patient createPatient(Patient newPatient) {
+
+    	return newPatient;
     }
     
-    @RequestMapping(value = "/Patient/Test", method=RequestMethod.POST)
+    @RequestMapping(value = "/Patient", method=RequestMethod.GET)
 	public String createPatientTest() {
 		Patient p = new Patient("Patient", "", null, new Name("Patient", "Bill"),
 				new Address("home", "123 Alzheimers Lane", "Atlanta", "GA", "90210"),
