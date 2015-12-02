@@ -231,12 +231,10 @@
       var patient = $.ajax({
       method: "GET",
       url: "http://localhost:8080/Patient/1",
-      dataType: 'jsonp'
+      dataType: 'json'
         }).always(function(data){
           console.log(data);
-//          var p = $.parseJSON(data);
-//          console.log(p.user);
-//          $('#name').append(p.user);
+          $('#name').html(data.name[0].given[0] + " " + data.name[0].family[0]);
         });
     });
 
